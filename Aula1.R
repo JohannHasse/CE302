@@ -201,6 +201,166 @@ data <- as.Date(data_string,
                 format = "%d/%m/%Y")
 print(data)
 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+data1 <- as.Date("2023-08-21")
+data2 <- as.Date("2023-08-15")
+
+data1 > data2
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+data <- as.Date("2023-08-21")
+data2 <- data + 7  # Adicionando 7 dias
+data3 <- data - 1  # Subtraindo 1 dia
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+data <- as.Date("2023-08-21")
+ano <- format(data, "%Y")
+mes <- format(data, "%m")
+dia <- format(data, "%d")
+dia
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+data1 <- as.Date("2023-08-21")
+data2 <- as.Date("2023-08-15")
+diferenca <- difftime(data1, data2, units = "days")  # Diferença em dias
+diferenca
 
 
-  
+###############################################################################
+
+require(lubridate)
+data_ymd <- ymd("2023-08-21")
+data_mdy <- mdy("08-21-2023")
+data_dmy <- dmy("21-08-2023")
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+data <- dmy("23-10-2024")
+nova_data <- data + days(7)
+nova_data1 <- data + months(2)
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+data <- dmy_hms("23-10-2024 18:44:05")
+ano <- year(data)
+mes <- month(data)
+dia <- day(data)
+hora <- hour(data)
+minuto <- minute(data)
+segundo <- second(data)
+
+print(ano)
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+data1 <- ymd("2023-08-21")
+data2 <- ymd("2023-08-15")
+diferenca_em_dias <- as.numeric(data1 - data2)
+diferenca_em_semanas <- as.numeric(weeks(data1 - data2))
+
+print(diferenca_em_dias)
+print(diferenca_em_semanas)
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+# Fuso Horário
+
+# Data original no fuso horário de Nova Iorque
+data_ny <- ymd_hms("2023-08-21 12:00:00", tz = "America/New_York")
+
+# Converter para o fuso horário de Londres
+data_london <- with_tz(data_ny, tz = "Europe/London")
+
+print(data_ny)
+print(data_london)
+
+?tz
+
+##############################################################################
+# Junção de Dados
+
+require(nycflights13)
+
+airlines
+airports
+planes
+weather
+
+
+view(planes)
+
+planes %>% 
+  count(tailnum) %>%
+  filter(n > 1)
+
+
+weather %>%
+  count(time_hour, origin) %>%
+  filter(n > 1)
+# count = group_bu + summarise
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+flights2 <- flights %>% 
+  filter(distance > 2000) %>% 
+  select(year, time_hour, origin, dest, tailnum, carrier)
+
+flights2
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+# Left e Right Join
+
+flights2_airlines = 
+  flights2  %>% 
+  left_join(., airlines,
+            by = c("carrier" = "carrier"))
+            
+          
+planes_flights = flights2 %>% 
+  right_join(planes, by = "tailnum")
+
+planes_flights
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+# O right_join retorna apenas as linhas do primeiro conjunto de dados
+
+view(origin_flights)
+
+origin_flights = flights2 %>% 
+  inner_join(airports, by = c("origin" = "faa")) 
+
+origin_flights
+
+origin_flights = flights2 %>% 
+  inner_join(airports, join_by(origin == faa))
+
+origin_flights
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+# O full_join retorna todas as linhas de ambos os conjuntos de dados
+
+dest_flights = flights2 %>% 
+  full_join(airports, by = c("dest"= "faa"))
+
+dest_flights = flights2 %>% 
+  full_join(airports, join_by(dest == faa))
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+# Semi-joins mantêm todas as linhas em x que têm uma correspondência em y
+
+airports %>% 
+  semi_join(flights2, join_by(faa == origin))
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+# Anti-joins retornam todas as linhas em x que não têm correspondência em y. 
+
+flights %>%
+  anti_join(airports, join_by(dest == faa)) %>% 
+  distinct(dest)
