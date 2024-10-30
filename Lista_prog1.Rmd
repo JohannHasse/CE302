@@ -1,0 +1,98 @@
+---
+title: "Lista_prog1"
+---
+1) Título
+
+2) Escreva uma parágrafo de texto normal
+
+3) Escreva uma *palavra* em *itálico*
+
+4) Deixe **outra palavra** em negrito
+
+5) Combine itálico e negrito em ***uma mesma palavra***.
+
+### Lista {#listas}
+- variavel 1
+- variavel 2
+- variavel 3
+
+### Lista Organizada
+- Elemento 1
+  - Variavel 1
+  - Variavel 2
+  - Variavel 3
+- Elemento 2
+  - Variavel 1
+    - Variavel 2
+      - Variavel 3
+  
+
+### Links
+
+[Guia de Markdown](https://www.markdownguide.org)\
+[Google?](https://www.google.com/)
+
+
+![](C:/Users/cabelo/Documents/Rstudio/Ara.jpg)
+
+![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTm968T5Um3hNW1F9-p2caKuPcn7e9D_6UEow&s)
+
+> Bloco de Citação
+
+
+
+## Elementos Estruturais
+
+
+---
+
+| Nomes | Idade | Gosta de Bolo |
+| - | - | - |
+| Julia | 21 | Sim |
+| Bruno | 19 | Sim |
+| Gabriel | 38 | Não
+
+
+### Lista Bem Organizada
+
+- Plantas Brasileiras
+  - Arvores
+    - Quaresmeira 
+    - Jacarandá de Minas
+    - Sibipiruna 
+    - Manacá da Serra
+  - Grama
+    - Esmeralda
+    - São Carlos 
+    - Bermudas 
+    - Santo Agostinho
+    
+
+### Código no texto
+
+No R, usamos funções como ``plot()`` ou ``barplot()`` para geral gráficos
+
+### Link do texto
+
+Se quiser ver novamente os exercícios de Listas,[clique aqui](#listas)
+
+| Item | Quantidade | 
+| - | - |
+| Maçãs | 5 |
+| Bananas | 3 | 
+| Laranjas | 8 |
+
+
+
+### Lista de tarefas
+
+- [x] Estudar
+- [ ] Terminar de assistir séries
+- [ ] Andar de bicicleta
+
+
+Este é um exemplo de texto[^1].
+
+[^1]: Esta é a explicação do exercício.
+
+
