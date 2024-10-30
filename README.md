@@ -1,2 +1,2 @@
 # CE302
-Repositório de CE304 - Estatistica
+Repositório de CE302 - Estatistica
