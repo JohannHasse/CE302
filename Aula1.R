@@ -93,6 +93,8 @@ require(data.table)
 
 ### NOVO DATA FRAME #################################################
 
+getwd()
+
 car_crash = fread("data/Brazil Total highway crashes 2010 - 2023.csv")
 
 summary(car_crash)
