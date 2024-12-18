@@ -1,8 +1,8 @@
 eh_negativo <- function(n){
   if(n < 0){
-    return("sim")
+    return(T)
   } else {
-    return("não")
+    return(F)
   }
 }
 
@@ -20,9 +20,9 @@ eh_primo <- function(n){
     }
   }
   if(divisores > 2){
-    return("não")
+    return(F)
   } else {
-    return("sim")
+    return(T)
   }
 }
 
@@ -32,9 +32,9 @@ eh_qudrad <- function(n){
   } 
   raiz = sqrt(n)
   if(raiz == floor(raiz)){
-    return("sim")
+    return(T)
   } else {
-    return("não")
+    return(F)
   }
   
   return(qudrad)
@@ -70,6 +70,6 @@ transf_matriz(matriz_A)
 
 matriz_A[2,1]
 
-
+eh_primo(matriz_A[2,1])
 
 
