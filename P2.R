@@ -8,7 +8,7 @@ eh_negativo <- function(n){
 
 eh_primo <- function(n){
   if(as.numeric(n) < 0){
-    return("não")
+    return(F)
   }
   
   divisores = 0
@@ -28,7 +28,7 @@ eh_primo <- function(n){
 
 eh_qudrad <- function(n){
   if(n < 0){
-    return("não")
+    return(F)
   } 
   raiz = sqrt(n)
   if(raiz == floor(raiz)){
@@ -46,16 +46,18 @@ transf_matriz <- function(matriz){
   
   for(i in 1:nrow(matriz)){
     for(j in 1:ncol(matriz)){
-      if(eh_primo(matriz[i,j]) == "sim"){
+      if(eh_primo(matriz[i,j]) == T){
         matriz[i,j] = matriz[i,j] * 3
-      } else if (eh_qudrad(matriz[i,j]) == "sim"){
+      } else if (eh_qudrad(matriz[i,j]) == T){
         matriz[i,j] = matriz[i,j] - 14
         if(matriz[i,j] < 0){
           matriz[i,j] = matriz[i,j]^5
         }
-      } else if (eh_negativo(matriz[i,j]) == "sim"){
+      } else if (eh_negativo(matriz[i,j]) == T){
         matriz[i,j] = sqrt(abs(matriz[i,j]))
-      } 
+      } else
+        return(matriz[i,j]
+      }
     }
   }
   
